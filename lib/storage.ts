@@ -1,4 +1,4 @@
-import { join } from 'node:path';
+import { posix } from 'node:path';
 import { StorageEngine } from 'multer';
 import { randomUUID } from 'node:crypto';
 import { IStorageOptions } from './storage.options';
@@ -66,7 +66,7 @@ export class MinioStorageEngine implements StorageEngine {
 
   private _getObjectPath(objectName: string) {
     const { path } = this.options;
-    return join(path || '/', objectName);
+    return posix.join(path || '/', objectName);
   }
 
   async _handleFile(req: Express.Request, file: Express.Multer.File, callback: any) {

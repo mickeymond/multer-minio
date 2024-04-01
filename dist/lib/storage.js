@@ -54,7 +54,7 @@ class MinioStorageEngine {
     }
     _getObjectPath(objectName) {
         const { path } = this.options;
-        return (0, node_path_1.join)(path || '/', objectName);
+        return node_path_1.posix.join(path || '/', objectName);
     }
     async _handleFile(req, file, callback) {
         try {
